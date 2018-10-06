@@ -1,0 +1,11 @@
+_gcd () {
+    # Set
+    IFS=$'\n' tmp=( $(compgen -W "$(ls "/var/govuk/")" -- "${COMP_WORDS[$COMP_CWORD]}" ))
+    COMPREPLY=( "${tmp[@]// /\ }" )
+}
+
+gcd() {
+  cd "/var/govuk/$1"
+}
+
+complete -o default -F _gcd gcd
